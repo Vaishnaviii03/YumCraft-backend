@@ -4,21 +4,25 @@ import numpy as np
 import pickle
 import ast
 import re
+import os
 from sklearn.metrics.pairwise import cosine_similarity
 
-api = Blueprint('api', __name__)
+api = Blueprint('api', _name_)
 
-# Load model and data
-with open('models\\recipe_recommendation_model.pkl', 'rb') as f:
+# Load model
+model_path = os.path.join(os.path.dirname(_file_), 'models', 'recipe_recommendation_model.pkl')
+with open(model_path, 'rb') as f:
     vocab = pickle.load(f)
 
-df = pd.read_csv('data\\processed\\recipes_processed.csv')
+# Load processed CSV
+csv_path = os.path.join(os.path.dirname(_file_), 'data', 'processed', 'recipes_processed.csv')
+df = pd.read_csv(csv_path)
 df['Ingredient_Vector'] = df['Ingredient_Vector'].apply(ast.literal_eval)
 
 # Vectorize function
 def vectorize_ingredients(ingredient_str, vocab):
     vector = [0] * len(vocab)
-    ingredients = [ingredient.strip() for ingredient in re.split(r',|\s', ingredient_str) if ingredient]
+    ingredients = [ingredient.strip().lower() for ingredient in re.split(r',|\s', ingredient_str) if ingredient]
     for ingredient in ingredients:
         if ingredient in vocab:
             vector[vocab.index(ingredient)] = 1
@@ -39,8 +43,6 @@ def recommend_recipes(user_vector, df, top_n=5):
 
 # API route for recommendation
 @api.route('/recommend', methods=['POST', 'OPTIONS'])
-
-
 def recommend():
     if request.method == 'OPTIONS':
         return jsonify({'message': 'OK'}), 200
