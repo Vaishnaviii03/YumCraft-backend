@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from route import api
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)  # Enable CORS
 
 # Register blueprint from route.py
@@ -13,5 +13,5 @@ app.register_blueprint(api)
 def home():
     return 'Yumcraft API is running.', 200
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
