@@ -20,7 +20,6 @@ The backend of **YumCraft** – a smart recipe recommendation system powered by 
 
 ```bash
 git clone https://github.com/Vaishnaviii03/YumCraft-backend.git
-cd flickpick-backend
 ```
 ### 3. Install dependencies
 
@@ -36,4 +35,4 @@ python main.py
 
 Check out the beautiful frontend built in React here:
 
-👉 [FlickPick Frontend Repo](https://github.com/Vaishnaviii03/YumCraft-frontend)
+👉 [YumCraft Frontend Repo](https://github.com/Vaishnaviii03/YumCraft-frontend.git)
