@@ -7,7 +7,7 @@ import re
 import os
 from sklearn.metrics.pairwise import cosine_similarity
 
-api = Blueprint('api', _name_)
+api = Blueprint('api', __name__)
 
 # Load model
 model_path = os.path.join(os.path.dirname(_file_), 'models', 'recipe_recommendation_model.pkl')
