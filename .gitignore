@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+.env
+.env.*
+
+# Pytest / coverage
+.cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Logs
+*.log
+
+# SQLite and other DB files
+*.sqlite3
+*.db
+
+# Pip files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
+
+# Compiled C extensions
+*.so
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Flask/Middleware specific
+instance/
+*.pid
